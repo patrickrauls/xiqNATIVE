@@ -31,6 +31,12 @@ export class Api {
       .do(this.logResponse)
       .catch(this.catchError)
   }
+  getTournamentVenue(venue_id) {
+    return this.http.get(`${this.url}courses/${venue_id}`)
+      .map(this.extractData)
+      .do(this.logResponse)
+      .catch(this.catchError)
+  }
   private logResponse(res: Response) {
     console.log(res);
   }

@@ -16,7 +16,7 @@
 <ion-content padding>
   <h2>upcoming tournaments</h2>
   <ion-list>
-    <ion-item *ngFor="let tournament of tournaments" (click)="goToTournament(tournament.id)">
+    <ion-item *ngFor="let tournament of tournaments" (click)="goToTournament(tournament)">
       {{tournament.name}}
     </ion-item>
   </ion-list>

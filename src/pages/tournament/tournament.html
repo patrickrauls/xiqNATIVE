@@ -7,12 +7,18 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>tournament</ion-title>
+    <ion-title>xIQ</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-{{this.name}}
+<h2>{{tournament.name}}</h2>
+<p>{{tournament.start}} - {{tournament.end}}</p>
+<p>{{tournament.venue.name}}</p>
+<p>{{tournament.venue.location}}</p>
+<p>{{tournament.venue.yards}} yards</p>
+<button (click)="startTournament(tournament)">start tournament</button>
+<button (click)="goBack()">go back</button>
 </ion-content>

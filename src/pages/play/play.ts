@@ -17,7 +17,8 @@ export class Play {
   tournaments: any[];
   courses: any[];
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api) {
-    this.getTournaments()
+    this.getTournaments();
+    this.getCourses();
   }
 
   goBack() {
@@ -26,14 +27,18 @@ export class Play {
   getCourses() {
     this.api.getCourses()
       .subscribe(courses => {
-        this.getCourses = courses;
+        this.courses = courses;
       })
+  }
+  goToCourse(course) {
+    this.navCtrl.push('Course', {
+      course: course
+    })
   }
   getTournaments() {
     this.api.getTournaments()
       .subscribe(tournaments => {
         this.tournaments = tournaments;
-        console.log('tourneys', tournaments);
       })
   }
   goToTournament(tournament) {
@@ -42,7 +47,6 @@ export class Play {
     })
   }
   ionViewDidLoad() {
-
   }
 
 }
