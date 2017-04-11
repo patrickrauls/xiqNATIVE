@@ -19,8 +19,42 @@ export class Api {
   constructor(private http: Http) {
     console.log('Hello Api Provider');
   }
+  getCourse(id) {
+    return this.http.get(this.url + 'courses/' + id)
+      .map(this.extractData)
+      .do(this.logResponse)
+      .catch(this.catchError)
+  }
   getCourses() {
     return this.http.get(this.url + 'courses')
+      .map(this.extractData)
+      .do(this.logResponse)
+      .catch(this.catchError)
+  }
+  getDistance(origin, target) {
+    return this.http.post(this.url + 'distance', { origin, target })
+      .map(this.extractData)
+      .do(this.logResponse)
+      .catch(this.catchError)
+  }
+  getHoles(course) {
+    return this.http.get(this.url + 'holes/' + course)
+      .map(this.extractData)
+      .do(this.logResponse)
+      .catch(this.catchError)
+  }
+  getPlayer(login) {
+    return this.http.patch(this.url + 'players', login)
+    .map(this.extractData)
+    .do(this.logResponse)
+    .catch(this.catchError)
+  }
+  getPlayers(ids) {
+    let queryString = '';
+    ids.forEach(id => {
+      queryString += 'ids[]=' + id.id + '&'
+    })
+    return this.http.get(this.url + 'players/?' + queryString)
       .map(this.extractData)
       .do(this.logResponse)
       .catch(this.catchError)

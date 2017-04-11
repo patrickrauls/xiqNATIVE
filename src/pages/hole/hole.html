@@ -1,0 +1,32 @@
+<!--
+  Generated template for the Hole page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>xIQ</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h1>{{tournament.name}}</h1>
+  <p>Round {{tournament.players[0].score.length}}</p>
+  <p>par {{hole.par}} | {{hole.yards}} yards</p>
+  <h2>{{hole.name}}</h2>
+  <ion-list>
+    <ion-item *ngFor="let player of players">
+      {{player.name.first}} {{player.name.last}}
+    </ion-item>
+  </ion-list>
+  <ion-list>
+    <ion-item *ngFor="let hazard of hole.hazards" (click)="getDistance(hazard.front || hazard.clear)">
+      {{hazard.name}}
+    </ion-item>
+  </ion-list>
+  <button (click)="goToScore()">enter score</button>
+</ion-content>

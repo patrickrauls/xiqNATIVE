@@ -27,6 +27,14 @@ export class Tournament {
         this.tournament.venue = venue;
       })
   }
+  startTournament(tournament) {
+    this.navCtrl.push('Rules', {
+      tournament: tournament
+    })
+  }
+  goBack() {
+    this.navCtrl.pop();
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad Tournament');
   }

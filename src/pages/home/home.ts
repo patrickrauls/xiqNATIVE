@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Api } from '../../providers/api';
 
 /**
  * Generated class for the Home page.
@@ -13,9 +14,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'home.html',
 })
 export class Home {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+  player: any = {
+    login: {
+      "id": 0
+    }
+  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api) {
+    this.getPlayer(this.player.login);
+  }
+  getPlayer(player_cred) {
+    this.api.getPlayer(player_cred)
+    .subscribe(player => {
+      this.player = player;
+    })
   }
   goPlay() {
     this.navCtrl.push('Play')
