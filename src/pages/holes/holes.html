@@ -16,11 +16,10 @@
 
 <ion-content padding>
 <ion-list>
-  <ion-item *ngFor="let hole of tournament.venue.holes" (click)="goToHole(hole)">
+  <ion-item *ngFor="let hole of state.venue.holes" (click)="goToHole(hole)">
     <h2>{{hole.name}}</h2>
     <p>par {{hole.par}}</p>
     <p>{{hole.yards}} yards</p>
-    <!--<button (click)="goToHole(hole)">go to {{hole.name}}</button>-->
   </ion-item>
 </ion-list>
 </ion-content>

@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>course</ion-title>
+    <ion-title *ngIf="state">{{state.course.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>

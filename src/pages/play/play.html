@@ -22,7 +22,7 @@
   </ion-list>
   <h2>nearby courses</h2>
   <ion-list>
-    <ion-item *ngFor="let course of courses">
+    <ion-item *ngFor="let course of courses" (click)="goToCourse(course)">
       {{course.name}}
     </ion-item>
   </ion-list>

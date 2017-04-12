@@ -13,16 +13,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'rules.html',
 })
 export class Rules {
-  tournament: any;
+  state: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.tournament = navParams.get('tournament');
+    this.state = navParams.get('state');
   }
   goBack() {
     this.navCtrl.pop();
   }
-  teeOff(tournament) {
+  teeOff() {
     this.navCtrl.push('Holes', {
-      tournament: tournament
+      state: this.state
     })
   }
   ionViewDidLoad() {

@@ -14,11 +14,14 @@
 
 
 <ion-content padding>
-<h2>{{tournament.name}}</h2>
-<p>{{tournament.start}} - {{tournament.end}}</p>
-<p>{{tournament.venue.name}}</p>
-<p>{{tournament.venue.location}}</p>
-<p>{{tournament.venue.yards}} yards</p>
-<button (click)="startTournament(tournament)">start tournament</button>
-<button (click)="goBack()">go back</button>
+  <h2>{{state.tournament.name}}</h2>
+  <p>{{state.tournament.start}} - {{state.tournament.end}}</p>
+  <div *ngIf="state.venue">
+    <p>{{state.venue.name}}</p>
+    <p>{{state.venue.location}}</p>
+    <p>{{state.venue.yards}} yards</p>
+  </div>
+
+  <button (click)="startTournament()">start tournament</button>
+  <button (click)="goBack()">go back</button>
 </ion-content>

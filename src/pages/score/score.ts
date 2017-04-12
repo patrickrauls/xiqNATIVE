@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Api } from '../../providers/api';
 
 /**
  * Generated class for the Score page.
@@ -12,27 +13,35 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-score',
   templateUrl: 'score.html',
 })
+
 export class Score {
-  tournament: any;
-  players: any[];
+  state: any;
   hole: any;
-  stat: any;
+  score: any;
   term: string[] = ['double eagle', 'eagle', 'birdie', 'par', 'bogey', 'double bogey', 'triple bogey'];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api) {
     this.hole = navParams.get('hole');
-    this.tournament = navParams.get('tournament');
-    this.players = navParams.get('players');
+    this.state = navParams.get('state');
+    console.log(this.state.tournament)
   }
+postScore(score) {
+  console.log(score);
+  console.log(this.state.tournament)
+  this.state.tournament.players[
+    this.state.tournament.players.findIndex(player => player.id === this.state.player.id)
+    ].score[this.state.tournament.players[0].score.length - 1][this.hole.id] = parseInt(score);
+  this.api.postScore(this.state.tournament)
+}
 nextHole(hole){
+  // this.postScore(this.score.value);
   this.navCtrl.push('Hole', {
-    tournament: this.tournament,
-    players: this.players,
-    hole: this.tournament.venue.holes[hole.id + 1]
+    state: this.state,
+    hole: this.state.venue.holes[hole.id + 1]
   })
 }
 finish() {
   this.navCtrl.push('Scorecard', {
-    tournament: this.tournament
+    state: this.state
   })
 }
   ionViewDidLoad() {

@@ -14,28 +14,27 @@ import { Api } from '../../providers/api';
   templateUrl: 'tournament.html',
 })
 export class Tournament {
-  tournament: any;
-
+  state: any;
+  venue: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api) {
-    this.tournament = navParams.get('tournament');
-    this.getTournamentVenue(this.tournament.venue);
-    console.log('tournament', this.tournament);
+    this.state = navParams.get('state');
+    this.getTournamentVenue(this.state.tournament.venue);
   }
+  
   getTournamentVenue(venue_id) {
     this.api.getTournamentVenue(venue_id)
       .subscribe(venue => {
-        this.tournament.venue = venue;
+        this.state.venue = venue;
       })
   }
-  startTournament(tournament) {
+  startTournament() {
     this.navCtrl.push('Rules', {
-      tournament: tournament
+      state: this.state
     })
   }
   goBack() {
     this.navCtrl.pop();
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Tournament');
   }
 }

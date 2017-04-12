@@ -45,9 +45,9 @@ export class Api {
   }
   getPlayer(login) {
     return this.http.patch(this.url + 'players', login)
-    .map(this.extractData)
-    .do(this.logResponse)
-    .catch(this.catchError)
+      .map(this.extractData)
+      .do(this.logResponse)
+      .catch(this.catchError)
   }
   getPlayers(ids) {
     let queryString = '';
@@ -67,6 +67,12 @@ export class Api {
   }
   getTournamentVenue(venue_id) {
     return this.http.get(`${this.url}courses/${venue_id}`)
+      .map(this.extractData)
+      .do(this.logResponse)
+      .catch(this.catchError)
+  }
+  postScore(stat) {
+    return this.http.patch(this.url + 'scores', stat)
       .map(this.extractData)
       .do(this.logResponse)
       .catch(this.catchError)

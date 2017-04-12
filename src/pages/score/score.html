@@ -14,14 +14,14 @@
 
 
 <ion-content padding>
-  <h1>{{tournament.name}}</h1>
-  <p>Round {{tournament.players[0].score.length}}</p>
+  <h1>{{state.tournament.name}}</h1>
+  <p>Round {{state.tournament.players[0].score.length}}</p>
   <p>par {{hole.par}} | {{hole.yards}} yards</p>
   <h2>{{hole.name}}</h2>
   <div id="scoring">
-    <ion-input type="number" ngModel="score"></ion-input>
-    <h3>{{this.term[this.score - hole.par + 2]}}</h3>
-    <ion-list id="stats">
+    <ion-input type="number" #score (keyup)="postScore(score.value)"></ion-input>
+    <h3>{{this.term[score.value - hole.par + 3]}}</h3>
+    <!--<ion-list id="stats">
       <ion-item>
         <ion-input type="checkbox"></ion-input>
         <ion-label>G.I.R.</ion-label>
@@ -38,9 +38,9 @@
         <ion-input type="number"></ion-input>
         <ion-label>sand</ion-label>
       </ion-item>
-    </ion-list>
+    </ion-list>-->
   </div>
-  <h4>score {{this.score}}</h4>
-  <button *ngIf="hole.id < (tournament.venue.holes.length - 1)" (click)="nextHole(hole)">next hole</button>
-  <button *ngIf="hole.id == (tournament.venue.holes.length - 1)" (click)="finish()">finish round</button>
+  <!--<h4>score {{score.value}}</h4>-->
+  <button *ngIf="hole.id < (state.venue.holes.length - 1)" (click)="nextHole(hole)">next hole</button>
+  <button *ngIf="hole.id == (state.venue.holes.length - 1)" (click)="finish()">finish round</button>
 </ion-content>

@@ -13,8 +13,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'course.html',
 })
 export class Course {
-
+  state: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.state = navParams.get('state');
   }
 
   ionViewDidLoad() {

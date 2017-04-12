@@ -14,21 +14,26 @@ import { Api } from '../../providers/api';
   templateUrl: 'home.html',
 })
 export class Home {
-  player: any = {
-    login: {
+  state: any;
+  login: any = {
+    credentials: {
       "id": 0
     }
   }
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api) {
-    this.getPlayer(this.player.login);
+    this.getPlayer(this.login.credentials);
   }
   getPlayer(player_cred) {
     this.api.getPlayer(player_cred)
-    .subscribe(player => {
-      this.player = player;
-    })
+      .subscribe(player => {
+        this.state = {
+          player: player
+        }
+      })
   }
   goPlay() {
-    this.navCtrl.push('Play')
+    this.navCtrl.push('Play', {
+      state: this.state
+    })
   }
 }

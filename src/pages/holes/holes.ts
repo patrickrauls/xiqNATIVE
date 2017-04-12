@@ -15,20 +15,18 @@ import * as io from 'socket.io-client';
   templateUrl: 'holes.html',
 })
 export class Holes {
-  socket: any;
-  tournament: any;
-  holes: any[];
+  state: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api) {
-    this.tournament = navParams.get('tournament');
-    this.tournament.socket = io('http://api.xiqgolf.com');
-    console.log(this.tournament)
+    this.state = navParams.get('state');
+    this.state.tournament.socket = io('http://api.xiqgolf.com');
   }
   goToHole(hole) {
     this.navCtrl.push('Hole', {
-      hole: hole,
-      tournament: this.tournament
+      state: this.state,
+      hole: hole
     })
   }
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad Holes');
   }

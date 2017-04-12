@@ -15,8 +15,7 @@ import { Geolocation } from '@ionic-native/geolocation';
   templateUrl: 'hole.html',
 })
 export class Hole {
-  tournament: any;
-  players: any[];
+  state: any;
   hole: any;
   distance: number;
   constructor(
@@ -25,22 +24,21 @@ export class Hole {
     public api: Api,
     private geolocation: Geolocation
   ) {
-    this.tournament = navParams.get('tournament');
+    this.state = navParams.get('state');
     this.hole = navParams.get('hole');
-    console.log(this.hole);
-    this.getPlayers(this.tournament.players)
+    console.log('tourney', this.state.tournament)
+    this.getPlayers(this.state.tournament.players)
   }
   getPlayers(ids) {
     this.api.getPlayers(ids)
       .subscribe(players => {
-        this.players = players;
+        this.state.players = players;
       })
   }
   goToScore() {
     this.navCtrl.push('Score', {
       hole: this.hole,
-      tournament: this.tournament,
-      players: this.players
+      state: this.state
     })
   }
   getDistance(target_string) {
@@ -50,17 +48,17 @@ export class Hole {
       lon: target_array[1]
     }
     this.geolocation.getCurrentPosition()
-    .then(gps => {
-      let origin: any = {
-        lat: gps.coords.latitude,
-        lon: gps.coords.longitude
-      }
-    this.api.getDistance(origin, target)
-    .subscribe(distance => {
-      this.distance = distance;
-      console.log(distance);
-    })
-    })
+      .then(gps => {
+        let origin: any = {
+          lat: gps.coords.latitude,
+          lon: gps.coords.longitude
+        }
+        this.api.getDistance(origin, target)
+          .subscribe(distance => {
+            this.distance = distance;
+            console.log(distance);
+          })
+      })
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad Hole');

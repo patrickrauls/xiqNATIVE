@@ -14,15 +14,19 @@ import { Api } from '../../providers/api';
   templateUrl: 'play.html',
 })
 export class Play {
+  state: any;
   tournaments: any[];
   courses: any[];
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api) {
+    this.state = navParams.get('state');
     this.getTournaments();
     this.getCourses();
   }
 
   goBack() {
-    this.navCtrl.push('Home')
+    this.navCtrl.push('Home', {
+      state: this.state
+    })
   }
   getCourses() {
     this.api.getCourses()
@@ -31,8 +35,9 @@ export class Play {
       })
   }
   goToCourse(course) {
+    this.state.course = course;
     this.navCtrl.push('Course', {
-      course: course
+      state: this.state
     })
   }
   getTournaments() {
@@ -42,8 +47,9 @@ export class Play {
       })
   }
   goToTournament(tournament) {
+    this.state.tournament = tournament;
     this.navCtrl.push('Tournament', {
-      tournament: tournament
+      state: this.state,
     })
   }
   ionViewDidLoad() {

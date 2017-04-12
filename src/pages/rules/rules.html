@@ -14,14 +14,14 @@
 
 
 <ion-content padding>
-<h1>{{tournament.name}}</h1>
-<p>{{tournament.start}} - {{tournament.end}}</p>
+<h1>{{state.tournament.name}}</h1>
+<p>{{state.tournament.start}} - {{state.tournament.end}}</p>
 <h2>rules</h2>
 <ion-list>  
-  <ion-item *ngFor="let rule of tournament.rules">
+  <ion-item *ngFor="let rule of state.tournament.rules">
     {{rule}}
   </ion-item>
 </ion-list>
-<button (click)="teeOff(tournament)">tee off</button>
+<button (click)="teeOff()">tee off</button>
 <button (click)="goBack()">go back</button>
 </ion-content>
