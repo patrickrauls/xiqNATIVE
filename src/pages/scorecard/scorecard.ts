@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Api } from '../../providers/api';
 
 /**
  * Generated class for the Scorecard page.
@@ -13,11 +14,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'scorecard.html',
 })
 export class Scorecard {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  state: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api) {
+    this.state = navParams.get('state');
   }
-
+  refreshScores() {
+    for (let i = 0; i < 60; i++) {
+      setTimeout(()=>{
+        this.getTournament
+      }, 5000)
+    }
+  }
+  getTournament(){
+    this.api.getTournament(this.state.tournament._id)
+    .subscribe(tournament => {
+      this.state.tournament = tournament;
+    })
+  }
+  goBack() {
+    this.navCtrl.pop();
+  }
   ionViewDidLoad() {
+    this.refreshScores()
     console.log('ionViewDidLoad Scorecard');
   }
 

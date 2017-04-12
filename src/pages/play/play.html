@@ -13,18 +13,18 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content ion-text color="light" padding>
   <h2>upcoming tournaments</h2>
   <ion-list>
     <ion-item *ngFor="let tournament of tournaments" (click)="goToTournament(tournament)">
-      {{tournament.name}}
+      <p ion-text color="light">{{tournament.name}}</p>
     </ion-item>
   </ion-list>
   <h2>nearby courses</h2>
   <ion-list>
     <ion-item *ngFor="let course of courses" (click)="goToCourse(course)">
-      {{course.name}}
+      <p ion-text color="light">{{course.name}}</p>
     </ion-item>
   </ion-list>
-  <button (click)="goBack()">go back</button>
+  <h3 (click)="goBack()">go back</h3>
 </ion-content>

@@ -59,6 +59,12 @@ export class Api {
       .do(this.logResponse)
       .catch(this.catchError)
   }
+  getTournament(id) {
+    return this.http.get(this.url + 'tournaments/' + id)
+    .map(this.extractData)
+    .do(this.logResponse)
+    .catch(this.catchError)
+  }
   getTournaments() {
     return this.http.get(this.url + 'tournaments')
       .map(this.extractData)
@@ -71,8 +77,8 @@ export class Api {
       .do(this.logResponse)
       .catch(this.catchError)
   }
-  postScore(stat) {
-    return this.http.patch(this.url + 'scores', stat)
+  postScore(tournament) {
+    return this.http.patch(this.url + 'scores', tournament)
       .map(this.extractData)
       .do(this.logResponse)
       .catch(this.catchError)

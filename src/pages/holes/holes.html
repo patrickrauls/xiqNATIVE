@@ -14,12 +14,10 @@
 </ion-header>
 
 
-<ion-content padding>
-<ion-list>
-  <ion-item *ngFor="let hole of state.venue.holes" (click)="goToHole(hole)">
+<ion-content style="background-image: url(../../assets/img/background)" padding>
+  <ion-card *ngFor="let hole of state.venue.holes" (click)="goToHole(hole)">
     <h2>{{hole.name}}</h2>
     <p>par {{hole.par}}</p>
     <p>{{hole.yards}} yards</p>
-  </ion-item>
-</ion-list>
+  </ion-card>
 </ion-content>

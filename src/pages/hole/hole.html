@@ -13,15 +13,16 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content ion-text color="light" padding>
   <h1>{{state.tournament.name}}</h1>
   <p>Round {{state.tournament.players[0].score.length}}</p>
   <p>par {{hole.par}} | {{hole.yards}} yards</p>
   <h2>{{hole.name}}</h2>
   <ion-list>
-    <ion-item *ngFor="let hazard of hole.hazards" (click)="getDistance(hazard.front || hazard.clear)">
+    <ion-item *ngFor="let hazard of hole.hazards" (click)="goToHazard(hazard)">
       {{hazard.name}}
     </ion-item>
   </ion-list>
   <button (click)="goToScore()">enter score</button>
+  <button (click)="goToScorecard()">leaderboard</button>
 </ion-content>

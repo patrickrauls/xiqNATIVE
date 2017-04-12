@@ -26,7 +26,7 @@ export class Hole {
   ) {
     this.state = navParams.get('state');
     this.hole = navParams.get('hole');
-    console.log('tourney', this.state.tournament)
+    console.log('state', this.state)
     this.getPlayers(this.state.tournament.players)
   }
   getPlayers(ids) {
@@ -41,24 +41,16 @@ export class Hole {
       state: this.state
     })
   }
-  getDistance(target_string) {
-    let target_array: string[] = target_string.split(', ');
-    let target: any = {
-      lat: target_array[0],
-      lon: target_array[1]
-    }
-    this.geolocation.getCurrentPosition()
-      .then(gps => {
-        let origin: any = {
-          lat: gps.coords.latitude,
-          lon: gps.coords.longitude
-        }
-        this.api.getDistance(origin, target)
-          .subscribe(distance => {
-            this.distance = distance;
-            console.log(distance);
-          })
-      })
+  goToScorecard() {
+    this.navCtrl.push('Scorecard', {
+      state: this.state
+    })
+  }
+  goToHazard(hazard) {
+    this.navCtrl.push('Hazards', {
+      state: this.state,
+      hazard: hazard
+    })
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad Hole');
