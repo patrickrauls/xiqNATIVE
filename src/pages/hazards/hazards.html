@@ -7,14 +7,23 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>hazards</ion-title>
+    <ion-title>xIQ</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-<h2>{{hazard.name}}</h2>
-<h3 *ngIf="distance">{{distance.distance}} yards</h3>
-<h4 (click)="goBack()">go back</h4>
+  <h2>{{hazard.name}}</h2>
+  <ion-card>
+    <ion-card-header>{{hazard.type}}</ion-card-header>
+    <ion-card-content>
+      <div *ngIf="distance">
+        <h5>{{distance.distance}} yards</h5>
+        <p>I don't think you can reach it</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <h4 (click)="goBack()">go back</h4>
 </ion-content>

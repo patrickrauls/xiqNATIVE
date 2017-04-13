@@ -16,8 +16,9 @@
 
 <ion-content style="background-image: url(../../assets/img/background)" padding>
   <ion-card *ngFor="let hole of state.venue.holes" (click)="goToHole(hole)">
-    <h2>{{hole.name}}</h2>
-    <p>par {{hole.par}}</p>
-    <p>{{hole.yards}} yards</p>
+    <ion-card-header>{{hole.name}}</ion-card-header>
+    <ion-card-content>
+      par {{hole.par}} | {{hole.yards}} yards
+    </ion-card-content>
   </ion-card>
 </ion-content>

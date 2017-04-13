@@ -28,5 +28,4 @@ export class Rules {
   ionViewDidLoad() {
     console.log('ionViewDidLoad Rules');
   }
-
 }

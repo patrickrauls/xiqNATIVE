@@ -22,7 +22,7 @@ export class Play {
     this.getTournaments();
     this.getCourses();
   }
-
+  
   goBack() {
     this.navCtrl.push('Home', {
       state: this.state

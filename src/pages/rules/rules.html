@@ -17,7 +17,7 @@
 <h1>{{state.tournament.name}}</h1>
 <p>{{state.tournament.start}} - {{state.tournament.end}}</p>
 <h2>rules</h2>
-<ion-list>  
+<ion-list no-lines>  
   <ion-item *ngFor="let rule of state.tournament.rules">
     {{rule}}
   </ion-item>

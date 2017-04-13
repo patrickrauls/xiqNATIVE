@@ -18,11 +18,11 @@
   <p>Round {{state.tournament.players[0].score.length}}</p>
   <p>par {{hole.par}} | {{hole.yards}} yards</p>
   <h2>{{hole.name}}</h2>
-  <ion-list>
-    <ion-item *ngFor="let hazard of hole.hazards" (click)="goToHazard(hazard)">
-      {{hazard.name}}
-    </ion-item>
-  </ion-list>
+  <h4>Hazards</h4>
+  <ion-card *ngFor="let hazard of hole.hazards" (click)="goToHazard(hazard)">
+    <ion-card-header>{{hazard.name}}</ion-card-header>
+    <ion-card-content>{{hazard.type}}</ion-card-content>
+  </ion-card>
   <button (click)="goToScore()">enter score</button>
   <button (click)="goToScorecard()">leaderboard</button>
 </ion-content>

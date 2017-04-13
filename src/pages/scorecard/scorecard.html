@@ -7,15 +7,36 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>scorecard</ion-title>
+    <ion-title>xIQ</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content *ngIf="state" padding>
-  <span *ngFor="let score of state.tournament.players[0].score[0]">
-        {{score}}
-        </span>
-        <button (click)="goBack()">go back</button>
+  <h2>Scorecard</h2>
+  <table>
+    <tr>
+      <td>
+        <div>front 9</div>
+        <h3>score</h3>
+      </td>
+      <td *ngFor="let score of front9; let i = index">
+        <div>{{i + 1}}</div>
+        <h3>{{score}}</h3>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <div>back 9</div>
+        <h3>score</h3>
+      </td>
+      <td *ngFor="let score of back9; let i = index">
+        <div>{{i + 10}}</div>
+        <h3>{{score}}</h3>
+      </td>
+    </tr>
+
+  </table>
+  <button (click)="goBack()">go back</button>
 </ion-content>

@@ -1,2 +1,15 @@
 page-hole {
+    background-image: url('../../assets/img/hole.jpg');
+    background-size: auto 100%;
+    background-position: center center;
+    ion-list {
+        background-color: rgba(0,0,0,0);
+        ion-label {
+            color: #fff;
+        }
+        ion-item {
+            background-color: rgba(0,0,0,0);
+            font-size: .8em;
+        }
+    }
 }

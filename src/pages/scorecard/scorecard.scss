@@ -1,3 +1,19 @@
 page-scorecard {
+ion-content span {
+    font-size: 4rem;
+    color: #ffffff;
+}
+    background-image: url('../../assets/img/cherryhillscountryclub.jpg');
+    background-size: auto 100%;
+    background-position: center center;
 
+table {
+    width: 100%;
+    div {
+        padding-top: 4rem;
+    }
+}
+button {
+    margin-top: 5rem;
+}
 }

@@ -19,7 +19,7 @@
   <p>par {{hole.par}} | {{hole.yards}} yards</p>
   <h2>{{hole.name}}</h2>
   <div id="scoring">
-    <ion-input type="number" #score (keyup)="postScore(score.value)"></ion-input>
+    <ion-input autofocus type="tel" #score (keyup)="postScore(score.value)"></ion-input>
     <h3>{{this.term[score.value - hole.par + 3]}}</h3>
     <!--<ion-list id="stats">
       <ion-item>
